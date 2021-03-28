@@ -1,0 +1,1 @@
+﻿Content/background.png, Content/midground.png, Content/foreground.png, Content/helicopter.png - created by Nathan Bean for this tutorial, released under public domain
