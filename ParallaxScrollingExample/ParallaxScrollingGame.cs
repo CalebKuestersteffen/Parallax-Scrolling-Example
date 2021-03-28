@@ -71,10 +71,29 @@ namespace ParallaxScrollingExample
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+
+            float playerX = MathHelper.Clamp(_player.Position.X, 300, 13600);
+            float offsetX = (300 - playerX);
+
+            Matrix transform;
+
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
+
+            // Background
+            transform = Matrix.CreateTranslation(offsetX * 0.333f, 0, 0);
+            _spriteBatch.Begin(transformMatrix: transform);
             _spriteBatch.Draw(_background, Vector2.Zero, Color.White);
+            _spriteBatch.End();
+
+            // Midground
+            transform = Matrix.CreateTranslation(offsetX * 0.666f, 0, 0);
+            _spriteBatch.Begin(transformMatrix: transform);
             _spriteBatch.Draw(_midground, Vector2.Zero, Color.White);
+            _spriteBatch.End();
+
+            // Foreground
+            transform = Matrix.CreateTranslation(offsetX, 0, 0);
+            _spriteBatch.Begin(transformMatrix: transform);
             _spriteBatch.Draw(_foreground, Vector2.Zero, Color.White);
             _player.Draw(gameTime, _spriteBatch);
             _spriteBatch.End();
